@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Prodigy X</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <script>
+        function openMenu() {
+            var element = document.getElementById("sideNav");
+            element.classList.toggle("active");
+        }
+
+        function update() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.timeout = 1000;
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    setTimeout('update()', 1000);
+                    //Create Status Object from Response
+                    var status = JSON.parse(xhttp.responseText);
+
+                    //Update Status on Page
+                    document.getElementById("R1").innerHTML = status.Relay1.Power;
+                    document.getElementById("R2").innerHTML = status.Relay2.Power;
+                    document.getElementById("R3").innerHTML = status.Relay3.Power;
+                    document.getElementById("R4").innerHTML = status.Relay4.Power;
+
+                    document.getElementById("R1Name").innerHTML = status.Relay1.Name;
+                    document.getElementById("R2Name").innerHTML = status.Relay2.Name;
+                    document.getElementById("R3Name").innerHTML = status.Relay3.Name;
+                    document.getElementById("R4Name").innerHTML = status.Relay4.Name;
+
+                }
+            }
+            xhttp.open("GET", "update", true);
+            xhttp.send(null);
+        }
+
+        function command(action, relay) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.timeout = 3000;
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    //Do something when server responds to command
+                }
+            }
+            xhttp.open("POST", "command", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("Action=" + action + "&Relay=" + relay);
+        }
+
+        /*
+                //Runs when requesting data export
+                function exportData() {
+                    var vorpRequest = new XMLHttpRequest();
+                    vorpRequest.timeout = 10000;
+                    vorpRequest.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            var csv = "";
+                            var csvFile;
+                            var downloadLink;
+                            csv = this.responseText;
+                            csvFile = new Blob([csv], {
+                                type: "text/csv"
+                            });
+                            downloadLink = document.createElement("a");
+                            downloadLink.download = "ProdigyX_Data.csv";
+                            downloadLink.href = window.URL.createObjectURL(csvFile);
+                            downloadLink.style.display = "none";
+                            document.body.appendChild(downloadLink);
+                            downloadLink.click();
+                        }
+                    }
+                    vorpRequest.open("GET", "csv", true);
+                    vorpRequest.send(null);
+                }
+        */
+
+    </script>
+</head>
+
+<body onload="update()">
+
+    <div class="grid-container">
+
+        <div onclick="openMenu()" class="menu-icon">
+            <i class="fas fa-bars header__menu"></i>
+
+        </div>
+
+        <header class="header">
+
+            <div class="header__search">System Overview</div>
+            <div class="header__avatar">Vorp Energy</div>
+
+        </header>
+
+        <aside class="sidenav" id="sideNav">
+
+            <div onclick="openMenu()" class="sidenav__close-icon">
+                <i class="fas fa-times sidenav__brand-close"></i>
+            </div>
+
+            <ul class="sidenav__list">
+
+                <a href="index.htm">
+                    <li class="sidenav__list-item">Relay Control</li>
+                </a>
+
+                <a href="network.htm">
+                    <li class="sidenav__list-item">Network Settings</li>
+                </a>
+
+                <a href="relay.htm">
+                    <li class="sidenav__list-item">Relay Settings</li>
+                </a>
+
+                <a href="alerts.htm">
+                    <li class="sidenav__list-item">Alert Settings</li>
+                </a>
+
+                <li class="sidenav__list-item" onclick="exportData()">Export Data</li>
+            </ul>
+
+        </aside>
+
+        <main class="main">
+
+            <div class="main-overview">
+
+                <div class="overviewcard">
+                    <h3 class="overviewcard__icon">Load</h3>
+                    <div class="overviewcard__info">
+                        Power Use: <span id="WL">N/A</span> W<br>
+                        Average Use: <span id="tbd">TBD</span>
+                    </div>
+                </div>
+
+                <div class="overviewcard">
+                    <h3 class="overviewcard__icon">Battery</h3>
+                    <div class="overviewcard__info">
+                        Capacity: <span id="tbd"></span> TBD<br>
+                        Voltage: <span id="V">N/A</span> V<br>
+                        Current: <span id="I">N/A</span> A<br>
+                    </div>
+                </div>
+
+                <div class="overviewcard">
+                    <h3 class="overviewcard__icon">Solar</h3>
+                    <div class="overviewcard__info">
+                        Panel Voltage: <span id="VPV">N/A</span> V<br>
+                        Panel Power: <span id="PPV">N/A</span> W<br>
+                        Charge State: <span id="CS">N/A</span><br>
+                    </div>
+                </div>
+
+                <div class="overviewcard">
+                    <h3 class="overviewcard__icon">System</h3>
+                    <div class="overviewcard__info">
+                        Date: <span id="DATE">N/A</span><br>
+                        Time: <span id="TIME">N/A</span><br>
+                        Temp: <span id="T">N/A</span>&deg;F
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="main-cards">
+
+                <div class="card">
+                    <h3 id="R1Name">5 Port PoE Switch</h3>
+                    <p>Power: <span id="R1">Off</span></p>
+                    <p><button class="button" onclick="command('Toggle','Relay1')">Toggle Power</button>
+                        <button class="button" onclick="command('Cycle','Relay1')">Power Cycle</button></p>
+                </div>
+
+                <div class="card">
+                    <h3 id="R2Name">PTZ Camera</h3>
+                    <p>Power: <span id="R2">Off</span></p>
+                    <p><button class="button" onclick="command('Toggle','Relay2')">Toggle Power</button>
+                        <button class="button" onclick="command('Cycle','Relay2')">Power Cycle</button></p>
+                </div>
+
+                <div class="card">
+                    <h3 id="R3Name">Access Point</h3>
+                    <p>Power: <span id="R3">Off</span></p>
+                    <p><button class="button" onclick="command('Toggle','Relay3')">Toggle Power</button>
+                        <button class="button" onclick="command('Cycle','Relay3')">Power Cycle</button></p>
+                </div>
+
+                <div class="card">
+                    <h3 id="R4Name">Strobe Light</h3>
+                    <p>Power: <span id="R4">Off</span></p>
+                    <p><button class="button" onclick="command('Toggle','Relay4')">Toggle Power</button>
+                        <button class="button" onclick="command('Cycle','Relay4')">Power Cycle</button></p>
+                </div>
+
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer__copyright">&copy; 2019 Vorp Energy</div>
+            <div class="footer__signature">Power Solutions for any Installation</div>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

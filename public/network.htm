@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Prodigy X</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <script>
+        function openMenu() {
+            var element = document.getElementById("sideNav");
+            element.classList.toggle("active");
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="grid-container">
+
+        <div onclick="openMenu()" class="menu-icon">
+            <i class="fas fa-bars header__menu"></i>
+
+        </div>
+
+        <header class="header">
+
+            <div class="header__search">Network Settings</div>
+            <div class="header__avatar">Vorp Energy</div>
+
+        </header>
+
+        <aside class="sidenav" id="sideNav">
+
+            <div onclick="openMenu()" class="sidenav__close-icon">
+                <i class="fas fa-times sidenav__brand-close"></i>
+            </div>
+
+            <ul class="sidenav__list">
+
+                <a href="index.htm">
+                    <li class="sidenav__list-item">Relay Control</li>
+                </a>
+
+                <a href="network.htm">
+                    <li class="sidenav__list-item">Network Settings</li>
+                </a>
+
+                <a href="relay.htm">
+                    <li class="sidenav__list-item">Relay Settings</li>
+                </a>
+
+                <a href="alerts.htm">
+                    <li class="sidenav__list-item">Alert Settings</li>
+                </a>
+
+                <li class="sidenav__list-item" onclick="exportData()">Export Data</li>
+            </ul>
+
+        </aside>
+
+        <main class="main">
+
+            <div class="main-header">
+                <div class="main-header__heading">
+                    <form name="networkForm" method="post" action="networkUpdate">
+                        <h3>Network Settings</h3>
+                        <p>Hostname: <input type=text name="Hostname"></p>
+                        <p>IP Type: DHCP:<input type=radio name="Type" value="DHCP"> Static:<input type=radio name="Type" value="Static"></p>
+                        <p>IP Address: <input type=text name="IPAddress" pattern="/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/"></p>
+                        <p>Subnet Mask: <input type=text name="SubnetMask"></p>
+                        <p>Default Gateway: <input type=text name="DefaultGateway"></p>
+                        <p>Port: <input type=text name="Port"></p>
+                        <input type="submit" value="Update Network Settings">
+                    </form>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="footer">
+            <div class="footer__copyright">&copy; 2019 Vorp Energy</div>
+            <div class="footer__signature">Power Solutions for any Installation</div>
+        </footer>
+
+    </div>
+
+</body></html>
