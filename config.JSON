@@ -1,0 +1,101 @@
+{
+  "Network": {
+    "Hostname": "Prodigy X",
+    "IP": {
+      "Type": "Static",
+      "Address": "192.168.0.55",
+      "Port": "80",
+      "SubnetMask": "255.255.255.0",
+      "DefaultGateway": "192.168.0.1"
+    },
+    "User": {
+      "Name": "Admin",
+      "Password": "vorp1234"
+    }
+  },
+  "Relay": {
+    "CycleDelay": 35000,
+    "Relay1": {
+      "Name": "Collin Rice",
+      "Time": {
+        "On": "16:00",
+        "Off": "09:15"
+      },
+      "Temp": {
+        "Low": "15",
+        "High": "55"
+      },
+      "BattVoltage": {
+        "Low": "10",
+        "High": "10"
+      }
+    },
+    "Relay2": {
+      "Name": "Dome",
+      "Time": {
+        "On": "10:00",
+        "Off": "11:35"
+      },
+      "Temp": {
+        "Low": "1",
+        "High": "100"
+      },
+      "BattVoltage": {
+        "Low": "12",
+        "High": "12"
+      }
+    },
+    "Relay3": {
+      "Name": "Ubiquiti Radio",
+      "Time": {
+        "On": "09:00",
+        "Off": "09:00"
+      },
+      "Temp": {
+        "Low": "35",
+        "High": "55"
+      },
+      "BattVoltage": {
+        "Low": "20",
+        "High": "20"
+      }
+    },
+    "Relay4": {
+      "Name": "Camera",
+      "Time": {
+        "On": "09:00",
+        "Off": "09:00"
+      },
+      "Temp": {
+        "Low": "1",
+        "High": "100"
+      },
+      "BattVoltage": {
+        "Low": "0",
+        "High": "0"
+      }
+    }
+  },
+  "Ping": {
+    "P1": {
+      "IP": "000.000.000.000",
+      "Relay": "0",
+      "CycleLimit": "0"
+    },
+    "P2": {
+      "IP": "000.000.000.000",
+      "Relay": "0",
+      "CycleLimit": "0"
+    },
+    "P3": {
+      "IP": "000.000.000.000",
+      "Relay": "0",
+      "CycleLimit": "0"
+    },
+    "P4": {
+      "IP": "000.000.000.000",
+      "Relay": "0",
+      "CycleLimit": "0"
+    }
+  }
+}

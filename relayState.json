@@ -1,0 +1,18 @@
+{
+    "Relay1": {
+        "Power": "Off",
+        "Name": "Relay 1"
+    },
+    "Relay2": {
+        "Power": "Off",
+        "Name": "Relay 2"
+    },
+    "Relay3": {
+        "Power": "Off",
+        "Name": "Relay 3"
+    },
+    "Relay4": {
+        "Power": "Off",
+        "Name": "Relay 4"
+    }
+}

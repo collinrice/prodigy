@@ -1,0 +1,101 @@
+{
+  "Network": {
+    "Hostname": "Prodigy X",
+    "IP": {
+      "Type": "Static",
+      "Address": "192.168.0.55",
+      "Port": "80",
+      "SubnetMask": "255.255.255.0",
+      "DefaultGateway": "192.168.0.1"
+    },
+    "User": {
+      "Name": "Admin",
+      "Password": "vorp1234"
+    }
+  },
+  "Relay": {
+    "CycleDelay": "",
+    "Relay1": {
+      "Name": "PTZ",
+      "Time": {
+        "On": "",
+        "Off": ""
+      },
+      "Temp": {
+        "Low": "",
+        "High": ""
+      },
+      "BattVoltage": {
+        "Low": "",
+        "High": ""
+      }
+    },
+    "Relay2": {
+      "Name": "Dome",
+      "Time": {
+        "On": "",
+        "Off": ""
+      },
+      "Temp": {
+        "Low": "",
+        "High": ""
+      },
+      "BattVoltage": {
+        "Low": "",
+        "High": ""
+      }
+    },
+    "Relay3": {
+      "Name": "PTP",
+      "Time": {
+        "On": "",
+        "Off": ""
+      },
+      "Temp": {
+        "Low": "",
+        "High": ""
+      },
+      "BattVoltage": {
+        "Low": "",
+        "High": ""
+      }
+    },
+    "Relay4": {
+      "Name": "CG",
+      "Time": {
+        "On": "",
+        "Off": ""
+      },
+      "Temp": {
+        "Low": "",
+        "High": ""
+      },
+      "BattVoltage": {
+        "Low": "",
+        "High": ""
+      }
+    }
+  },
+  "Ping": {
+    "P1": {
+      "IP": "000.000.000.000",
+      "Relay": "0",
+      "CycleLimit": "0"
+    },
+    "P2": {
+      "IP": "000.000.000.000",
+      "Relay": "0",
+      "CycleLimit": "0"
+    },
+    "P3": {
+      "IP": "000.000.000.000",
+      "Relay": "0",
+      "CycleLimit": "0"
+    },
+    "P4": {
+      "IP": "000.000.000.000",
+      "Relay": "0",
+      "CycleLimit": "0"
+    }
+  }
+}
